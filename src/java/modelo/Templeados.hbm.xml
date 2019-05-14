@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-13-2019 07:40:16 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Templeados" table="templeados" catalog="test" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tcargo" class="modelo.Tcargo" fetch="select">
+            <column name="id_cargo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tdeptoPais" class="modelo.TdeptoPais" fetch="select">
+            <column name="id_depto_pais" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tmunicipios" class="modelo.Tmunicipios" fetch="select">
+            <column name="id_municipio" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tprofesion" class="modelo.Tprofesion" fetch="select">
+            <column name="id_profesion" not-null="true" />
+        </many-to-one>
+        <property name="codEmpleado" type="string">
+            <column name="cod_empleado" length="20" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="primer_apellido" length="50" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="segundo_apellido" length="50" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="80" not-null="true" />
+        </property>
+        <property name="nroIdentidad" type="string">
+            <column name="nro_identidad" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="fecha_nac" length="10" not-null="true" />
+        </property>
+        <property name="lugarNacimiento" type="string">
+            <column name="lugar_nacimiento" length="60" not-null="true" />
+        </property>
+        <property name="sexo" type="char">
+            <column name="sexo" length="1" not-null="true" />
+        </property>
+        <property name="estadoCivil" type="char">
+            <column name="estado_civil" length="1" not-null="true" />
+        </property>
+        <property name="sueldoBruto" type="big_decimal">
+            <column name="sueldo_bruto" precision="16" not-null="true" />
+        </property>
+        <property name="fecAlta" type="date">
+            <column name="fec_alta" length="10" not-null="true" />
+        </property>
+        <property name="fecBaja" type="date">
+            <column name="fec_baja" length="10" />
+        </property>
+        <property name="tipoEmpleado" type="char">
+            <column name="tipo_empleado" length="1" not-null="true" />
+        </property>
+        <property name="creadoPor" type="string">
+            <column name="creado_por" length="20" not-null="true" />
+        </property>
+        <property name="modificadoPor" type="string">
+            <column name="modificado_por" length="20" />
+        </property>
+        <property name="fecModificado" type="timestamp">
+            <column name="fec_modificado" length="19" />
+        </property>
+        <property name="idPais" type="int">
+            <column name="id_pais" not-null="true" />
+        </property>
+        <property name="idDeptoEmp" type="int">
+            <column name="id_depto_emp" not-null="true" />
+        </property>
+        <set name="tmovEmpleados" table="tmov_empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_empleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.TmovEmpleado" />
+        </set>
+    </class>
+</hibernate-mapping>

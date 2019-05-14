@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.0.19:3306/test?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">Denver$8</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping resource="modelo/Toperacion.hbm.xml"/>
+    <mapping resource="modelo/Menu.hbm.xml"/>
+    <mapping resource="modelo/Clientes.hbm.xml"/>
+    <mapping resource="modelo/Rol.hbm.xml"/>
+    <mapping resource="modelo/Menurol.hbm.xml"/>
+    <mapping resource="modelo/TmovEmpleado.hbm.xml"/>
+    <mapping resource="modelo/Facmae.hbm.xml"/>
+    <mapping resource="modelo/TcontactoEmpleado.hbm.xml"/>
+    <mapping resource="modelo/Tpais.hbm.xml"/>
+    <mapping resource="modelo/Tmovimientos.hbm.xml"/>
+    <mapping resource="modelo/Tprofesion.hbm.xml"/>
+    <mapping resource="modelo/Producto.hbm.xml"/>
+    <mapping resource="modelo/Tcargo.hbm.xml"/>
+    <mapping resource="modelo/Usuario.hbm.xml"/>
+    <mapping resource="modelo/TdeptoPais.hbm.xml"/>
+    <mapping resource="modelo/Tcorrelativo.hbm.xml"/>
+    <mapping resource="modelo/Tmunicipios.hbm.xml"/>
+    <mapping resource="modelo/Facdet.hbm.xml"/>
+    <mapping resource="modelo/Templeados.hbm.xml"/>
+    <mapping resource="modelo/Testado.hbm.xml"/>
+    <mapping resource="modelo/TctaBcoEmpleado.hbm.xml"/>
+    <mapping resource="modelo/TdeptoEmp.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-13-2019 07:40:16 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Facdet" table="facdet" catalog="test" optimistic-lock="version">
+        <id name="idRow" type="java.lang.Integer">
+            <column name="id_row" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="facmae" class="modelo.Facmae" fetch="select">
+            <column name="idfactura" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="modelo.Producto" fetch="select">
+            <column name="codproducto" length="20" not-null="true" />
+        </many-to-one>
+        <property name="nro_item" type="int">
+            <column name="nro_item" not-null="true" />
+        </property>
+        <property name="cantidad" type="double">
+            <column name="cantidad" precision="10" not-null="true" />
+        </property>
+        <property name="preciovta" type="double">
+            <column name="preciovta" precision="18" not-null="true" />
+        </property>
+        <property name="subtotal" type="double">
+            <column name="subtotal" precision="18" scale="4" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

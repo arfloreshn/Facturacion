@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-13-2019 07:40:16 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Tmovimientos" table="tmovimientos" catalog="test" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="toperacion" class="modelo.Toperacion" fetch="select">
+            <column name="id_operacion" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="60" not-null="true" />
+        </property>
+        <property name="tipo" type="char">
+            <column name="tipo" length="1" not-null="true" />
+        </property>
+        <property name="valor" type="big_decimal">
+            <column name="valor" precision="12" scale="4" not-null="true" />
+        </property>
+        <property name="snActiva" type="byte">
+            <column name="sn_activa" not-null="true" />
+        </property>
+        <set name="tmovEmpleados" table="tmov_empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_movimiento" not-null="true" />
+            </key>
+            <one-to-many class="modelo.TmovEmpleado" />
+        </set>
+    </class>
+</hibernate-mapping>

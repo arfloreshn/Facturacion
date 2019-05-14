@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-13-2019 07:40:16 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Facmae" table="facmae" catalog="test" optimistic-lock="version">
+        <id name="idfactura" type="java.lang.Integer">
+            <column name="idfactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clientes" class="modelo.Clientes" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <property name="nroFactura" type="int">
+            <column name="nro_factura" not-null="true" />
+        </property>
+        <property name="fecfactura" type="timestamp">
+            <column name="fecfactura" length="19" not-null="true" />
+        </property>
+        <property name="subtotal" type="double">
+            <column name="subtotal"  not-null="true" />
+        </property>
+        <property name="iva" type="double">
+            <column name="iva"  not-null="true" />
+        </property>
+        <property name="totalventa" type="double">
+            <column name="totalventa"  not-null="true" />
+        </property>
+        <set name="facdets" table="facdet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idfactura" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Facdet" />
+        </set>
+    </class>
+</hibernate-mapping>
